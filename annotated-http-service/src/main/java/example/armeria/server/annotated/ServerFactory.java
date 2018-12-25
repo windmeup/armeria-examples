@@ -24,4 +24,8 @@ public final class ServerFactory {
     }
 
     private ServerFactory() {}
+
+    public static void main(String[] args) {
+        of(7600).start().join();
+    }
 }

@@ -7,9 +7,9 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     mavenCentral()
 }
-
 dependencyManagement {
     imports {
         mavenBom 'com.linecorp.armeria:armeria-bom:0.78.1'

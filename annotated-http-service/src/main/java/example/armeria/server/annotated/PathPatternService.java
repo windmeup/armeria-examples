@@ -26,6 +26,11 @@ public class PathPatternService {
         return "path: " + name;
     }
 
+    @Get("/path2")
+    public String pathVar2(@Param("name") String name) {
+        return "path2: " + name;
+    }
+
     /**
      * Accesses the parameter with the name of the capturing group.
      */
@@ -37,8 +42,8 @@ public class PathPatternService {
     /**
      * Access the parameter with the index number.
      */
-    @Get("glob:/glob/**")
-    public String glob(@Param("0") String name) {
-        return "glob: " + name;
+    @Get("glob:/glob/*/**")
+    public String glob(@Param("0") String name, @Param("1") String title) {
+        return "glob: " + name + " " + title ;
     }
 }
