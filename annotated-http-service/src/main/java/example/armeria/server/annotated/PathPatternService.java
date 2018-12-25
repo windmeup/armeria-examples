@@ -27,23 +27,28 @@ public class PathPatternService {
     }
 
     @Get("/path2")
-    public String pathVar2(@Param("name") String name) {
+    public String pathVar2(@Param("name") String name) { // @Param()可以获得请求中的参数
         return "path2: " + name;
     }
 
     /**
      * Accesses the parameter with the name of the capturing group.
      */
-    @Get("regex:^/regex/(?<name>.*)$")
-    public String regex(@Param String name) {
-        return "regex: " + name;
+    @Get("regex:^/regex/(?<abc>.*)$") // ?<name>可以给正则式的匹配组命名
+    public String regex(@Param String abc) {
+        return "regex: " + abc;
+    }
+
+    @Get("regex:^/regex2/(?<abc>.*)$")
+    public String regex2(@Param String abc, @Param("name") String name) { // 同样可以获得请求参数,不影响path的匹配
+        return "regex: " + abc + " " + name;
     }
 
     /**
      * Access the parameter with the index number.
      */
     @Get("glob:/glob/*/**")
-    public String glob(@Param("0") String name, @Param("1") String title) {
+    public String glob(@Param("0") String name, @Param("1") String title) { // 0代表第一个wildcard,1代表第二个wildcard
         return "glob: " + name + " " + title ;
     }
 }
